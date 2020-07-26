@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+
+    <!-- Load the latest version of TensorFlow.js -->
+    <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+    <!-- Load the coco-ssd model... -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
+
+    <title>TensorflowJS Object Detection</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="css/main.css" rel="stylesheet">      
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Dirks TensorflowJS Object Detector</a>
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Help</button>
+        </div>
+    </nav>
+
+    <div id="console" class="container"></div>
+
+    <div class="container" style="margin-top:2em">
+        <label for="imageUpload" class="upload-label">
+            Choose...
+        </label>
+        <input type="file" id="fileElem" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">
+        <button id="btn-fileSelect" class="btn btn-primary btn-lg">Select a file</button>
+    </div>
+
+    <div class="container image-section" style="display:none; margin-top:2em">
+      <div class="img-preview">
+              <canvas id="myCanvas">
+              </canvas>
+      </div>
+      <div>
+          <button type="button" class="btn btn-primary btn-lg " id="btn-predict" style="margin-top:2em">Predict!</button>
+      </div>
+  </div>
+
+  
+  <div class="loader container" style="display:none;"></div>
+
+  <div class="container" style="margin-top:2em">
+    <h3 id="result_headline">
+        Results:
+    </h3>
+  </div>
+
+  <div class="container">
+    <h3 id="result">
+        <span> </span>
+    </h3>
+  </div>
+
+  <!-- Load index.js after the content of the page -->
+  <script src="js/index.js"></script>
+  </body>
+</html>
