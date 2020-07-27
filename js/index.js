@@ -52,7 +52,27 @@ async function predict() {
   console.log(result);
   $('.loader').hide();
   $('#result').fadeIn(600);
-  $('#result').text(result[0].class + ' with ' + (result[0].score*100).toFixed(2) + '% probability.');
+  // Make the list
+  listElement = document.createElement('ul');
+  const res = document.getElementById('result');
+  res.appendChild(listElement);
+  for (let i = 0; i < result.length; i++) {
+    //$('#result').text(result[0].class + ' with ' + (result[0].score*100).toFixed(2) + '% probability.');
+    // make a list
+    // create an item for each one
+    listItem = document.createElement('li');
+
+    // Add the item text
+    listItem.innerHTML = result[i].class + ' with ' + (result[i].score*100).toFixed(2) + '% probability.';
+
+    // Add listItem to the listElement
+    listElement.appendChild(listItem);
+  }
+
+  // write a text when no object was found
+  if (result.length == 0) {
+    $('#result').text('no object found');
+  }
   paintBoxes(result);
 }
 
@@ -89,6 +109,9 @@ function paintBoxes(result) {
     context.fillText(
         result[i].score.toFixed(3) + ' ' + result[i].class, result[i].bbox[0],
         result[i].bbox[1] > 10 ? result[i].bbox[1] - 5 : 10);
+  }
+  if (result.length == 0) {
+    context.fillText('no object found');
   }
 }
 
