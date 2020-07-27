@@ -55,6 +55,8 @@ async function predict() {
   // Make the list
   listElement = document.createElement('ul');
   const res = document.getElementById('result');
+  // remove all childs in the node
+  res.innerHTML = "";
   res.appendChild(listElement);
   for (let i = 0; i < result.length; i++) {
     //$('#result').text(result[0].class + ' with ' + (result[0].score*100).toFixed(2) + '% probability.');
